@@ -114,14 +114,14 @@ font-family: myFirstFont;
       * width/height = content + padding + border
     * border-box 微软盒模型
       * width / height = content
-* CSS3布局
-  * 分栏布局
-    * column-width 栏目宽度
-    * column-count 栏目列数
-    * column-gap 栏目距离
-    * column-rule 栏目间隔线
-  * 响应式布局
-    * 根据不同的屏幕尺寸引用不同的样式
+### CSS3布局
+* 分栏布局
+  * column-width 栏目宽度
+  * column-count 栏目列数
+  * column-gap 栏目距离
+  * column-rule 栏目间隔线
+* 响应式布局
+  * 根据不同的屏幕尺寸引用不同的样式
 ```html
 <link rel="stylesheet" type="text/css" href="a.css" media="screen and (min-width:100px) and (max-width:1000px)">
 ```
@@ -137,26 +137,26 @@ font-family: myFirstFont;
 ```css
 @media screen and (min-width:100px) and (max-width:1000px) {}
 ```
-* CSS3 UI样式
-  * 圆角
-    * border-radius:1-4/1-4;
-  * 边框
-    * border-image 边框图片
-      * border-image-sourceg 引入图片
-      * border-image-slice 切割图片
-      * border-image-width 边框宽度
-      * border-image-repeat 图片排列方式 round-平铺 repeat-重复 stretch-拉伸
-    * border-color 边框颜色
-  * 线性渐变
-    * linear-gtadient([<起点>||<角度>,]?<点>,<点>...)
-    * left/top/left top, 0 deg, color 50%
-    * repeating-linear-gtadient
-  * 径向渐变
-    * radial-gradient([<起点>]?[<形状>||<大小>,]?<点>,<点>...)
-  * 背景
-    * background:url(a.jpg) 0 0, url(b.jpg) 0 100%; 多背景
-    * background-size: x y; 背景尺寸
-    * background-origin: border | padding | content; 从XXX区域显示背景
-    * background-clip: border | padding | content | no-clip; 从XXX区域裁剪背景
-  * 遮罩
-    * mask-image mask-position mask-repeat
+### CSS3 UI样式
+* 圆角
+  * border-radius:1-4/1-4;
+* 边框
+  * border-image 边框图片
+    * border-image-sourceg 引入图片
+    * border-image-slice 切割图片
+    * border-image-width 边框宽度
+    * border-image-repeat 图片排列方式 round-平铺 repeat-重复 stretch-拉伸
+  * border-color 边框颜色
+* 线性渐变
+  * linear-gtadient([<起点>||<角度>,]?<点>,<点>...)
+  * left/top/left top, 0 deg, color 50%
+  * repeating-linear-gtadient
+* 径向渐变
+  * radial-gradient([<起点>]?[<形状>||<大小>,]?<点>,<点>...)
+* 背景
+  * background:url(a.jpg) 0 0, url(b.jpg) 0 100%; 多背景
+  * background-size: x y; 背景尺寸
+  * background-origin: border | padding | content; 从XXX区域显示背景
+  * background-clip: border | padding | content | no-clip; 从XXX区域裁剪背景
+* 遮罩
+  * mask-image mask-position mask-repeat
