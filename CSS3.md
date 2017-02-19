@@ -137,6 +137,48 @@ font-family: myFirstFont;
 ```css
 @media screen and (min-width:100px) and (max-width:1000px) {}
 ```
+### CSS3 动画
+* transition过渡
+  * transition-property 运动样式 all||[attr]||none
+  * transition-duration 运动时间
+  * transition-delay 延迟时间
+  * transition-timing-function 运动形式
+    * linear 匀速
+    * ease 逐渐变慢
+    * ease-in 加速
+    * ease-out 减速
+    * ease-in-out 先加速后减速
+    * cubic-bezier 贝塞尔曲线(x1,y1,x2,y2)
+  * 过渡事件完成
+```javascript
+obj.addEventListerner("webkitTransitionEnd", function(){},false); //webkit
+obj.addEventListerner("transitionend", function(){},false); //moz
+```
+* transform 2D变换
+  * rotate() 旋转 -deg 度数 -transform-origin 旋转基点
+  * skew() 倾斜 -skexX() -skewY()
+  * scale() 缩放 -scaleX() -scaleY()
+  * translate() 位移 -translateX() -translateY()
+* transform 3D变换
+  * transform-style 建立3d空间 preserve-3d
+  * persopective 景深
+  * persopective-origin 景深基点
+  * backface-visibility 隐藏背面
+* animation 动画
+  * @keyframes 动画名称 {动画状态}
+  * 关键帧的时间单位 -数字 0% 100% -字符 from(0%) to(100%)
+  * animation-name animation-duration 动画名称/持续时间
+  * animation-play-state 播放状态 running/paused
+  * animation-timing-function 运动形式
+    * linear 匀速
+    * ease 逐渐变慢
+    * ease-in 加速
+    * ease-out 减速
+    * ease-in-out 先加速后减速
+    * cubic-bezier 贝塞尔曲线(x1,y1,x2,y2)
+  * animation-delay 动画延迟 只有第一次
+  * animation-iteration-count 重复次数 infinite无限次
+  * animation-direction 播放前重置 alternate 直接从上次停止的位置执行 normal 从0%开始
 ### CSS3 UI样式
 * 圆角
   * border-radius:1-4/1-4;
