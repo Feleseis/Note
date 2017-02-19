@@ -1,29 +1,29 @@
 ## 语义化标签
-* <header></header> 页眉
+* &lt;header&gt;&lt;/header&gt; 页眉
   * 主要用于页面的头部的信息介绍，也可用于板块头部
-* <hgroup></hgroup> 页面上的一个标题组合
+* &lt;hgroup&gt;&lt;/hgroup&gt; 页面上的一个标题组合
   * 一个标题和一个子标题，或者标语的组合
-* <nav></nav> 导航 （包含链接的的一个列表）
-* <footer></footer>页脚
+* &lt;nav&gt;&lt;/nav&gt; 导航 （包含链接的的一个列表）
+* &lt;footer&gt;&lt;/footer&gt;页脚
   * 页面的底部 或者 版块底部
-* <section> <section> 页面上的版块
+* &lt;section&gt;&lt;section&gt; 页面上的版块
   * 用于划分页面上的不同区域,或者划分文章里不同的节
-* <article></ article > 用来在页面中表示一套结构完整且独立的内容部分
+* &lt;article&gt;&lt;/article&gt; 用来在页面中表示一套结构完整且独立的内容部分
   * 可以用来呈现论坛的一个帖子，杂志或报纸中的一篇文章，一篇博客，用户提交的评论内容，可互动的页面模块挂件等。
-* <aside></ aside> 元素标签可以包含与当前页面或主要内容相关的引用、侧边栏、广告、nav元素组，以及其他类似的有别与主要内容的部分
+* &lt;aside&gt;&lt;/aside&gt; 元素标签可以包含与当前页面或主要内容相关的引用、侧边栏、广告、nav元素组，以及其他类似的有别与主要内容的部分
   * aside 的内容应该与 article 的内容相关。
-  * 被包含在<article>中作为主要内容的附属信息部分，其中的内容 以是与当前文章有关的引用、词汇列表等
-  * 在<article>之外使用，作为页面或站点全局的附属信息部分；最典型的形式是侧边栏(sidebar)，其中的内容可以是友情链接、附属导航或广告单元等。
-* <figure> < figure > 用于对元素进行组合。一般用于图片或视频
-* <figcaption> <figcaption> figure的子元素 用于对figure的内容 进行说明
-* <time></time>用来表现时间或日期
-* <datalist></datalist>选项列表。与 input 元素配合使用，来定义 input 可能的值。
+  * 被包含在&lt;article&gt;中作为主要内容的附属信息部分，其中的内容 以是与当前文章有关的引用、词汇列表等
+  * 在&lt;article&gt;之外使用，作为页面或站点全局的附属信息部分；最典型的形式是侧边栏(sidebar)，其中的内容可以是友情链接、附属导航或广告单元等。
+* &lt;figure>&lt;/figure&gt; 用于对元素进行组合。一般用于图片或视频
+* &lt;figcaption&gt;&lt;/figcaption&gt; figure的子元素 用于对figure的内容 进行说明
+* &lt;time&gt;&lt;/time&gt;用来表现时间或日期
+* &lt;datalist&gt;&lt;/datalist&gt;选项列表。与 input 元素配合使用，来定义 input 可能的值。
 * &lt;details&gt;&lt;/details&gt;用于描述文档或文档某个部分的细节
   * 该元素用于摘录引用等 应该与页面的主要内容区分开的其他内容
   * Open 属性默认展开
-* <summary></summary> details 元素的标题
-* <dialog></dialog>定义一段对话
-* <address></address>定义文章 或页面作者的详细联系信息
+* &lt;summary>&lt;/summary> details 元素的标题
+* &lt;dialog>&lt;/dialog>定义一段对话
+* &lt;address>&lt;/address>定义文章 或页面作者的详细联系信息
 * &lt;mark&gt;&lt;/mark&gt; 需要标记的词或句子
 * &lt;keygen&gt;给表单添加一个公钥
 * &lt;progress&gt;&lt;/progress&gt;定义进度条
