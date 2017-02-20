@@ -299,25 +299,25 @@
   * 存储量限制 ( 5M )
   * 客户端完成，不会请求服务器处理
   * sessionStorage数据是不共享、 localStorage共享
-  * Storage API
-    * setItem()
-      * 设置数据，key/value类型，类型都是字符串
-      * 可以用获取属性的形式操作
-    * getItem()
-      * 获取数据，通过key来获取到相应的value
-    * removeItem()
-      * 删除数据，通过key来删除相应的value
-    * clear()
-      * 删除全部存储的值
-    * 存储事件:
-      * 当数据有修改或删除的情况下，就会触发storage事件
-      * 在对数据进行改变的窗口对象上是不会触发的
-      * Key : 修改或删除的key值，如果调用clear(),key为null
-      * newValue  新设置的值，如果调用removeStorage(),key为null
-      * oldValue 调用改变前的value值
-      * storageArea : 当前的storage对象
-      * url 触发该脚本变化的文档的url
-      * 注：session同窗口才可以,例子：iframe操作
+* Storage API
+  * setItem()
+    * 设置数据，key/value类型，类型都是字符串
+    * 可以用获取属性的形式操作
+  * getItem()
+    * 获取数据，通过key来获取到相应的value
+  * removeItem()
+    * 删除数据，通过key来删除相应的value
+  * clear()
+    * 删除全部存储的值
+  * 存储事件:
+    * 当数据有修改或删除的情况下，就会触发storage事件
+    * 在对数据进行改变的窗口对象上是不会触发的
+    * Key : 修改或删除的key值，如果调用clear(),key为null
+    * newValue  新设置的值，如果调用removeStorage(),key为null
+    * oldValue 调用改变前的value值
+    * storageArea : 当前的storage对象
+    * url 触发该脚本变化的文档的url
+    * 注：session同窗口才可以,例子：iframe操作
 ## 音频和视频
 * 标签
   * audio 、video
