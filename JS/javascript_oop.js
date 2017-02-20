@@ -104,10 +104,78 @@
 //   console.log(ps[i].name);
 // }
 /*----------------------------*/
+// function createPerson (name, age) {
+//   var obj = new Object();
+//   obj.name = name;
+//   obj.age = age;
+//   obj.say = function () {
+//     console.log(this.name);
+//   };
+//   return obj;
+// }
+// var p1 = createPerson("zhangsan", 20);
 /*----------------------------*/
+// function Person (name, age) {
+//   this.name = name;
+//   this.age = age;
+//   this.say = function () {
+//     console.log(this.name);
+//   };
+// }
+// var p1 = new Person("zhangsan", 20);
+// p1.say();
+// console.log(p1 instanceof Person);
+// console.log(Person.prototype.isPrototypeOf(p1));
+// console.log(p1.constructor == Person);
+// console.log(p1.hasOwnProperty("age"));
+// console.log("age" in p1);
+// function hasPrototypeProperty (obj, prop) {
+//   return ((!obj.hasOwnProperty(prop)) && (prop in obj));
+// }
 /*----------------------------*/
+// function Person () {}
+// Person.prototype = {
+//   constructor:Person, //手动指定constructor
+//   name:"zhangsan",
+//   age:20,
+//   say:function () {
+//     console.log(this.name);
+//   }
+// };
+// var p1 = new Person();
+// p1.say();
+// console.log(p1.constructor == Person);
 /*----------------------------*/
+// function Person (name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+// Person.prototype = {
+//   constructor:Person, //手动指定constructor
+//   say:function () {
+//     console.log(this.name);
+//   }
+// };
+// var p1 = new Person("zhangsna", 20);
+// p1.say();
 /*----------------------------*/
+// function Parent () {
+//   this.pv = "Parent";
+// }
+// Parent.prototype.showParentValue = function () {
+//   console.log(this.pv);
+// }
+// function Child () {
+//   this.cv = "child";
+// }
+// //让Child的原型链指向Parent对象
+// Child.prototype = new Parent();
+// Child.prototype.showChildValue = function () {
+//   console.log(this.cv);
+// }
+// var c = new Child();
+// c.showChildValue();
+// c.showParentValue();
 /*----------------------------*/
 /*----------------------------*/
 /*----------------------------*/

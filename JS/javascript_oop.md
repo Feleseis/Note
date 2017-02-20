@@ -156,15 +156,120 @@ for (var i = 0; i < ps.length; i++) {
   console.log(ps[i].name);
 }
 ```
+* 工厂方式创建
+  - 在function中创建一个对象
+  - 为这个对象设置相应的属性和方法
+  - 返回这个对象
+  - 工厂方式虽然解决了类的问题，但无法检测对象的数据类型
 ```javascript
+function createPerson (name, age) {
+  var obj = new Object();
+  obj.name = name;
+  obj.age = age;
+  obj.say = function () {
+    console.log(this.name);
+  };
+  return obj;
+}
+var p1 = createPerson("zhangsan", 20);
 ```
+* 构造函数方式创建
+  - 构造函数的创建方式和工厂方式的创建类似
+  - 函数的名称就是类的名称，在函数内部通过this关键字来完成属性和方法的定义
+  - 使用构造函数的方式可以通过instanceof来检测对象的类型
+  - 每一个对象中都会存在方法的拷贝，对象行为过多会占用大量空间，可以将函数放置于全局变量中定义，让类中的行为指向同一个函数
 ```javascript
+function Person (name, age) {
+  this.name = name;
+  this.age = age;
+  this.say = function () {
+    console.log(this.name);
+  };
+}
+var p1 = new Person("zhangsan", 20);
+//检测对象的数据类型
+console.log(p1 instanceof Person);
+//对象是否是某个函数的原型
+console.log(Person.prototype.isPrototypeOf(p1));
+//检测某个对象的constructor
+console.log(p1.constructor == Person);
+//检测属性是否是自己的属性
+console.log(p1.hasOwnProperty("age"));
+//检测某个对象在原型或自身中是否包含某属性
+console.log("age" in p1);
+//检测某个属性是否在原型中存在
+function hasPrototypeProperty (obj, prop) {
+  return ((!obj.hasOwnProperty(prop)) && (prop in obj));
+}
+p1.say();
 ```
+* 基于原型创建
+  - 通过json方式改写
+  - 这种方式会重写原型
+  - constructor会指向Object 可以在json中说明原型指向
+  - 存在问题
+    - 可以有效完成封装
+    - 无法通过构造函数来设置属性值
+    - 当属性中有引用类型变量时，可能存在变量值重复
+  - 为了解决原型所带来的问题，此处需要通过组合构造函数和原型来实现对象的创建
+    - 将属性在构造函数中定义 讲方法在原型中定义
+
 ```javascript
+function Person () {}
+Person.prototype = {
+  constructor:Person, //手动指定constructor
+  name:"zhangsan",
+  age:20,
+  say:function () {
+    console.log(this.name);
+  }
+};
+var p1 = new Person();
+p1.say();
+console.log(p1.constructor == Person);
 ```
+* 基于组合和原型创建对象
+  - 将属性在构造函数中定义 讲方法在原型中定义
 ```javascript
+function Person (name, age) {
+  this.name = name;
+  this.age = age;
+}
+Person.prototype = {
+  constructor:Person, //手动指定constructor
+  say:function () {
+    console.log(this.name);
+  }
+};
+var p1 = new Person("zhangsna", 20);
+p1.say();
 ```
+## 继承
+* 基于原型链
+  - 不能再设定了原型链后重新为原型链赋值
+  - 一定要在原型链赋值之后才能添加或覆盖方法
+  - 缺点
+    - 无法在子类中调用父类的构造函数，无法把子类的属性赋值到父类
+    - 父类中有引用类型，会添加至子类的原型中，其中一个对象修改了这个引用的值后其他对象的引用的值也会被修改
+  - 一般不会单纯的使用原型链的方式来实现继承
 ```javascript
+function Parent () {
+  this.pv = "Parent";
+}
+Parent.prototype.showParentValue = function () {
+  console.log(this.pv);
+}
+function Child () {
+  this.cv = "child";
+}
+//让Child的原型链指向Parent对象
+Child.prototype = new Parent();
+Child.prototype.showChildValue = function () {
+  console.log(this.cv);
+}
+var c = new Child();
+c.showChildValue();
+c.showParentValue();
 ```
 ```javascript
 ```
