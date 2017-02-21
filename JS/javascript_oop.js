@@ -214,25 +214,167 @@
 // console.log(c1.name);
 // console.log(c2.name);
 /*----------------------------*/
+// function Parent (name) {
+//   this.color = ["red", "blue"];
+//   this.name = name;
+// }
+// Parent.prototype.ps = function () {
+//   console.log(this.color);
+// };
+// function Child(name, age) {
+//   Parent.call(this, name);
+//   this.age = age;
+// }
+// Child.prototype = new Parent();
+// Child.prototype.say = function () {
+//   console.log(this.name+" "+this.color);
+// };
+// var c1 = new Child("Tom", 20);
+// c1.color.push("green");
+// var c2 = new Child("Jim", 30);
+// c1.say();
+// c1.ps();
+// c2.say();
 /*----------------------------*/
+// // fn();
+// function fn() {
+//   console.log("fn");
+// }
+// fn();
+// // fn2();
+// var fn2 = function () {
+//   console.log("fn2");
+// }
+// fn2();
 /*----------------------------*/
+// var color = "green";
+// var showColor = function () {
+//   console.log(this.color);
+// };
+// showColor();
+// function changeColor () {
+//   var anotherColor = "red";
+//   function swapColor () {
+//     var tempColor = anotherColor;
+//     anotherColor = color;
+//     color = tempColor;
+//   }
+//   swapColor();
+// }
+// changeColor();
+// showColor();
 /*----------------------------*/
+// function compareObjectFun (prop) {
+//   return function (obj1, obj2) {
+//     if (obj1[prop] > obj2[prop]) {
+//       return 1;
+//     } else if (obj1[prop] < obj2[prop]) {
+//       return -1;
+//     } else {
+//       return 0;
+//     }
+//   }
+// }
+// var o1 = {name:"zhangsan", age:20};
+// var o2 = {name:"lisi", age:25};
+// var compare = compareObjectFun("name");
+// var res = compare(o1, o2);
+// console.log(res);
 /*----------------------------*/
+// function fn () {
+//   var fns = [];
+//   //i这个变量是保存在fn这个作用域中
+//   for (var i = 0; i < 10; i++) {
+//     fns[i] = function () {
+//       return i;
+//     };
+//   }
+//   return fns;
+// }
+// var fs = fn();
+// for (var i = 0; i < fs.length; i++) {
+//   //通过闭包来调用所有函数，当输i的时候会去上一级作用域中查找
+//   //这个时候i的值已经是10，所以连续输出10个10
+//   console.log(fs[i]());
+// }
 /*----------------------------*/
+// function fn () {
+//   var fns = [];
+//   for (var i = 0; i < 10; i++) {
+//     (function (num) {
+//       fns[num] = function () {
+//         return num;
+//       };
+//     })(i);
+//   }
+//   return fns;
+// }
+// var fs = fn();
+// for (var i = 0; i < fs.length; i++) {
+//   console.log(fs[i]());
+// }
 /*----------------------------*/
+// var name = "aaa";
+// var person = {
+//   name : "zhangsna",
+//   age : 20,
+//   say : function () {
+//     return function () {
+//       return this.name;
+//     }
+//   }
+// };
+// console.log(person.say()());
 /*----------------------------*/
+// var name = "aaa";
+// var person = {
+//   name : "zhangsna",
+//   age : 20,
+//   say : function () {
+//     var that = this;
+//     return function () {
+//       //此时that指向person，that.name就是person中的name
+//       return that.name;
+//     }
+//   }
+// };
+// console.log(person.say()());
 /*----------------------------*/
+// for (var i = 0; i < 10; i++) {}
+// console.log(i); //10
 /*----------------------------*/
+// (function () {
+//   for (var i = 0; i < 10; i++) {}
+// })();
+// console.log(i); //i is not defined
 /*----------------------------*/
+// function Person (name) {
+//   this.setName = function (value) {
+//     name = value;
+//   };
+//   this.getName = function () {
+//     return name;
+//   };
+// }
+// var p = new Person("zhangsan");
+// console.log(p.getName());
+// p.setName("lisi")
+// console.log(p.getName());
 /*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
+// var Person;
+// (function () {
+//   var name = "";
+//   Person = function (value) {
+//     name = value;
+//   };
+//   Person.prototype.setName = function (value) {
+//     name = value;
+//   };
+//   Person.prototype.getName = function () {
+//     return name;
+//   };
+// })();
+// var p1 = new Person("zhangsan");
+// p1.setName("lisi")
+// console.log(p1.getName());
 /*----------------------------*/

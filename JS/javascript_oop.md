@@ -324,49 +324,200 @@ console.log(c1.name);
 console.log(c2.name);
 ```
 * 基于组合方式
+ - 属性通过伪造的方式实现 方法通过原型链的方式实现
 ```javascript
+function Parent (name) {
+  this.color = ["red", "blue"];
+  this.name = name;
+}
+Parent.prototype.ps = function () {
+  console.log(this.color);
+};
+function Child(name, age) {
+  Parent.call(this, name);
+  this.age = age;
+}
+Child.prototype = new Parent();
+Child.prototype.say = function () {
+  console.log(this.name+" "+this.color);
+};
+var c1 = new Child("Tom", 20);
+c1.color.push("green");
+var c2 = new Child("Jim", 30);
+c1.say();
+c1.ps();
+c2.say();
+```
+## 闭包
+* 函数的执行顺序
+  - 通过function fn()这种方式来定义的函数永远都会被最先初始化
+  - 匿名函数 在定义之前调用会报错
+```javascript
+// fn();
+function fn() {
+  console.log("fn");
+}
+fn();
+// fn2();
+var fn2 = function () {
+  console.log("fn2");
+}
+fn2();
+```
+* 函数作用域链
+  - 在js中当进行函数调用，会为每一个函数增加一个属性SCOPE，通过这个属性来指向一块内存，
+  - 这块内存包含所有上下文使用的变量，当某个函数中调用了新函数之后，心函数依然会有一个作用域来执行原有函数的SCOPE和自己新增的SCOPE，这样就形成了一个链式结构叫做作用域链
+```javascript
+var color = "green";
+var showColor = function () {
+  console.log(this.color);
+};
+showColor();
+function changeColor () {
+  var anotherColor = "red";
+  function swapColor () {
+    var tempColor = anotherColor;
+    anotherColor = color;
+    color = tempColor;
+  }
+  swapColor();
+}
+changeColor();
+showColor();
+```
+* 匿名函数&闭包的作用域
+  - 通过返回函数来扩大作用域的方法就是闭包
+  - 使用闭包虽然可以延长作用域，但是会占用更多的内存，一般非特殊情况下不要使用闭包
+```javascript
+function compareObjectFun (prop) {
+  return function (obj1, obj2) {
+    if (obj1[prop] > obj2[prop]) {
+      return 1;
+    } else if (obj1[prop] < obj2[prop]) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+}
+var o1 = {name:"zhangsan", age:20};
+var o2 = {name:"lisi", age:25};
+var compare = compareObjectFun("name");
+var res = compare(o1, o2);
+console.log(res);
+```
+* 闭包的变量问题
+```javascript
+function fn () {
+  var fns = [];
+  //i这个变量是保存在fn这个作用域中
+  for (var i = 0; i < 10; i++) {
+    fns[i] = function () {
+      return i;
+    };
+  }
+  return fns;
+}
+var fs = fn();
+for (var i = 0; i < fs.length; i++) {
+  //通过闭包来调用所有函数，当输i的时候会去上一级作用域中查找
+  //这个时候i的值已经是10，所以连续输出10个10
+  console.log(fs[i]());
+}
 ```
 ```javascript
+function fn () {
+  var fns = [];
+  for (var i = 0; i < 10; i++) {
+    var tf = function (num) {
+      fns[num] = function () {
+        return num;
+      };
+    };
+    tf(i);
+  }
+  return fns;
+}
+var fs = fn();
+for (var i = 0; i < fs.length; i++) {
+  console.log(fs[i]());
+}
+```
+* 闭包this问题
+  - 当完成person.say()之后这个函数就调用结束了，在这个函数调用结束之前，this指向person，但是调用匿名函数的时候this就指向了null(es5解释为window)，所以得到的结果是aaa
+```javascript
+var name = "aaa";
+var person = {
+  name : "zhangsna",
+  age : 20,
+  say : function () {
+    return function () {
+      return this.name;
+    }
+  }
+};
+console.log(person.say()());
 ```
 ```javascript
+var name = "aaa";
+var person = {
+  name : "zhangsna",
+  age : 20,
+  say : function () {
+    var that = this;
+    return function () {
+      //此时that指向person，that.name就是person中的name
+      return that.name;
+    }
+  }
+};
+console.log(person.say()());
+```
+* 块作用域
+  - 在js中没有块作用域，不管是循环还是判断之后这个变量会一直存在
+  - 在全局使用某个变量来进行循环或判断之后，这个变量会影响到函数中的变量，全局变量在作用域链的最上层，访问最慢
+  - 解决的方式是闭包
+    - 在团队开发中可能会涉及到定义同名的全局变量，所以尽量将全局变量的代码放到一个匿名函数中，并且马上调用匿名函数。既可以立即执行全局变量的代码又可以将这些变量控制在想要控制的作用域中
+```javascript
+for (var i = 0; i < 10; i++) {}
+console.log(i); //10
 ```
 ```javascript
+(function () {
+  for (var i = 0; i < 10; i++) {}
+})();
+console.log(i); //i is not defined
+```
+* 私有变量
+```javascript
+function Person (name) {
+  this.setName = function (value) {
+    name = value;
+  };
+  this.getName = function () {
+    return name;
+  };
+}
+var p = new Person("zhangsan");
+console.log(p.getName());
+p.setName("lisi")
+console.log(p.getName());
 ```
 ```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
+var Person;
+(function () {
+  var name = "";
+  Person = function (value) {
+    name = value;
+  };
+  Person.prototype.setName = function (value) {
+    name = value;
+  };
+  Person.prototype.getName = function () {
+    return name;
+  };
+})();
+var p1 = new Person("zhangsan");
+p1.setName("lisi")
+console.log(p1.getName());
 ```
