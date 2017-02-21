@@ -177,7 +177,42 @@
 // c.showChildValue();
 // c.showParentValue();
 /*----------------------------*/
+// function Parent () {
+//   this.color = ["red", "green"];
+// }
+// function Child () {
+//   //在Child中的this指向的是Child的对象
+//   //当调用Parent方法的时候，this又指向了Child
+//   //this.color = ["red", "green"];
+//   //也就等于在Child中有了this.color属性 变相完成了继承
+//   Parent.call(this);
+//   //这种调用方式仅仅完成了函数的调用，根本无法实现继承
+//   // Parent();
+// }
+// var c1 = new Child();
+// c1.color.push("blue");
+// console.log(c1.color); //[ 'red', 'green', 'blue' ]
+// var c2 = new Child();
+// console.log(c2.color); //[ 'red', 'green' ]
 /*----------------------------*/
+// function Parent (name) {
+//   this.color = ["red", "green"];
+//   this.name = name;
+//   this.say = function () {
+//     console.log(this.name);
+//   }
+// }
+// // Person.prototype.say = function () {
+// //   console.log(this.name);
+// // };
+// function Child (name, age) {
+//   this.age = age;
+//   Parent.call(this, name);
+// }
+// var c1 = new Child("Tom", 20);
+// var c2 = new Child("Jim", 30);
+// console.log(c1.name);
+// console.log(c2.name);
 /*----------------------------*/
 /*----------------------------*/
 /*----------------------------*/

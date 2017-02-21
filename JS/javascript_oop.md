@@ -204,6 +204,14 @@ function hasPrototypeProperty (obj, prop) {
 p1.say();
 ```
 * 基于原型创建
+  - 原型是js中非常特殊的一个对象，当一个函数创建之后，会随之产生一个原型对象
+  - 当通过这个函数创建了一个具体的对象后，在这个具体的对象中就会有一个属性指向原型
+  - 原型理解
+    - function Person(){};Person函数中有一个prototype的属性指向Person的原型对象，在原型对象中有一个constructor属性指向了Person函数，所以可以通过new Person()来创建对象
+    -  通过Person.prototype.name为原型设置值之后，这些属性和方法都是设置在Person的原型中
+    - 当使用Person创建了对象之后，会在对象中有一个不能访问的属性_prop_指向了原型
+    - 当使用对象调用原型的时候，首先会在对象的内部找是否有这个属性，如果没有则会通过_prop_去原型中找属性。所以当调用p1.say()，在自己的空间中不存在这个方法，就会去原型中寻找，找到之后完成say的调用
+    - 当创建了一个新的p2之后，依然会有一个_prop_属性指向Person的原型，此时如果通过p2.name设置了属性之后，会在对象自己的内存空间中存储name的值，当调用say方法的湿乎乎寻找name时，在自己的空间找到之后就不会去原型中查找了。原型中的值不会被替换，仅仅只是在查找的时候被忽略。
   - 通过json方式改写
   - 这种方式会重写原型
   - constructor会指向Object 可以在json中说明原型指向
@@ -271,10 +279,51 @@ var c = new Child();
 c.showChildValue();
 c.showParentValue();
 ```
+* 基于伪造
+  - 每调用一次new Child();就等于执行了一次对象属性的设置，此时每个对象的空间中都有单独的color属性，而不再原型中存在，因此不会被共享
+  - 使用伪造的方式可以把子类的构造函数参数传递到父类中
+  - 由于使用伪造的方式不会完成对Child的原型指向Parent，所以say方法不存在
+  - 解决方法是将这个方法放置到Parent中使用this来创建，问题是这样每个对象中都会有say，占用空间，也不会单纯的用伪造方式实现继承
 ```javascript
+function Parent () {
+  this.color = ["red", "green"];
+}
+function Child () {
+  //在Child中的this指向的是Child的对象
+  //当调用Parent方法的时候，this又指向了Child
+  //this.color = ["red", "green"];
+  //也就等于在Child中有了this.color属性 变相完成了继承
+  Parent.call(this);
+  //这种调用方式仅仅完成了函数的调用，根本无法实现继承
+  // Parent();
+}
+var c1 = new Child();
+c1.color.push("blue");
+console.log(c1.color); //[ 'red', 'green', 'blue' ]
+var c2 = new Child();
+console.log(c2.color); //[ 'red', 'green' ]
 ```
 ```javascript
+function Parent (name) {
+  this.color = ["red", "green"];
+  this.name = name;
+  this.say = function () {
+    console.log(this.name);
+  }
+}
+// Person.prototype.say = function () {
+//   console.log(this.name);
+// };
+function Child (name, age) {
+  this.age = age;
+  Parent.call(this, name);
+}
+var c1 = new Child("Tom", 20);
+var c2 = new Child("Jim", 30);
+console.log(c1.name);
+console.log(c2.name);
 ```
+* 基于组合方式
 ```javascript
 ```
 ```javascript
