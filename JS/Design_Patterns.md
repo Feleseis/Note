@@ -1,78 +1,16 @@
 ## 单例模式
+* 单例模式在js中使用非常频繁 通过确保单例对象只存在一个实例 就可以确信在所有代码中使用的是全局资源
 * 普通的单体
+  - 用来划分命名空间 将一群相关的方法和属性组织到一起
 * 具有局部变量的单体
+  - 利用闭包使单体拥有自己的局部变量
 * 惰性单体
 * 分支单体
-
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
+## 工厂模式
+* 工厂的目的在于判别接口最终使用哪个类来实例化 产生实例的过程不用new关键字 最终的效果是多态以及类与类之间的松耦合
+* 简单工厂
+  - 通过第三方的类来王城松耦合的任务
+* 复杂工厂
+  - 通过把实例化的任务交给子类来完成来达到松耦合的目的
+* 超级工厂
+  - 通过eval来完成只能工厂
