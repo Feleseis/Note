@@ -348,6 +348,53 @@ c1.say();
 c1.ps();
 c2.say();
 ```
+```javascript
+//解耦合
+function Person(name) {
+  this.name = name;
+}
+function extend(subClass, superClass) {
+  //让子类原型属性等于父类原型属性
+  //初始化一个临时空对象用于转换主父类的关系
+  var F = function() {};
+  F.prototype = superClass.prototype;
+  //让子类继承F
+  subClass.prototype = new F();
+  subClass.prototype.constructor = subClass;
+  //为子类增加属性superClass
+  subClass.superClass = superClass.prototype;
+  //让父类的constructor指向父类
+  if(superClass.prototype.constructor == Object.prototype.constructor) {
+    subClass.prototype.constructor = superClass;
+  }
+}
+function Author(name, books) {
+  Author.superClass.constructor.call(this, name);
+  this.books = books;
+  this.getBooks = function() {
+    return this.name + " " + this.books;
+  }
+}
+extend(Author, Person);
+var jack = new Author("jack","html");
+console.log(jack.getBooks());
+//掺元类——>聚合
+//有些时候不需要严格的继承，只需要一个或几个类中的一些方法
+function mixin(receivingClass, givingClass) {
+  for (var methodName in givingClass.prototype) {
+    if (!receivingClass.prototype[methodName]) {
+      receivingClass.prototype[methodName] = givingClass.prototype[methodName];
+    }
+  }
+}
+function mixin(receivingClass, givingClass) {
+  for (var methodName in givingClass) {
+    if (!receivingClass._proto_[methodName]) {
+      receivingClass._proto_[methodName] = givingClass[methodName];
+    }
+  }
+}
+```
 ## 闭包
 * 函数的执行顺序
   - 通过function fn()这种方式来定义的函数永远都会被最先初始化
@@ -521,3 +568,10 @@ var p1 = new Person("zhangsan");
 p1.setName("lisi")
 console.log(p1.getName());
 ```
+## 接口
+* 注释法
+ - 最简单 但是功能也是最弱的
+ - 利用interface和implement“文字” 用注释的方式表现出来
+ - 缺点 要人为地遵守
+* 属性检测法
+* 鸭式变形法
