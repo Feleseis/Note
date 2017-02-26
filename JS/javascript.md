@@ -65,33 +65,31 @@ console.log((1 / +0) === (1 / -0)); //false
 ### 字符串
 * 引号
   - 由于HTML语言的属性值使用双引号，所以很多项目约定JavaScript语言的字符串只使用单引号
+### 数组
+* 数组的本质
+  - 本质上，数组属于一种特殊的对象
 ```javascript
+console.log(typeof ["a", "b", "c"]); //object
+console.log(Object.keys(["a", "b", "c"])); //[ '0', '1', '2' ]
+for (var variable in ["a", "b", "c"]) {
+  console.log(variable); //0 1 2
+}
 ```
+### 函数
+* 函数作用域
+  - Javascript只有两种作用域
+    - 一种是全局作用域，变量在整个程序中一直存在，所有地方都可以读取
+    - 另一种是函数作用域，变量只在函数内部存在
+  - 对于var命令来说，局部变量只能在函数内部声明，在其他区块中声明，一律都是全局变量
+  - 函数执行时所在的作用域，是定义时的作用域，而不是调用时所在的作用域
 ```javascript
+if (true) {
+  var x = 10;
+}
+console.log(x); //10
 ```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
-```javascript
-```
+### 数据转换
+* 隐式转换
+  - 不同类型的数据互相运算
+  - 对非布尔值类型的数据求布尔值
+  - 对非数值类型的数据使用一元运算符（即“+”和“-”）
