@@ -4,9 +4,9 @@
   - 对于三列布局，最好采用浮动加定位的方法，对于左右两侧的盒子进行浮动处理，对于中间元素（盒子）进行设置其左右margin来实现定位。
 * 父容器塌陷解决方式
   - 给父容器设置一个高度
-  - 设置父容器overflow：hidden或者overflow：auto；
+  - 设置父容器overflow：hidden或者overflow：auto； BFC
   - 设置父元素浮动（不推荐）
-  - 设置空元素对其（clearfix：both）
+  - 设置空元素对其（clear：both）
   - 给父元素应用以下样式
 ```css
 .clearfix::before,
