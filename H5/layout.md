@@ -18,3 +18,37 @@
   clear: both;
 }
 ```
+
+* Flex
+  - 概念
+    - 主轴：Flex容器的主轴主要用来配置Flex项目，默认是水平方向
+    - 侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向的
+    - 方向：默认主轴从左向右，侧轴默认从上到下
+    - 主轴和侧轴并不是固定不变的，通过flex-direction可以互换。
+  - 必要元素
+    - 指定一个盒子为伸缩盒子 display: flex
+    - 设置属性来调整此盒的子元素的布局方式 例如 flex-direction
+    - 明确主侧轴及方向
+    - 可互换主侧轴，也可改变方向
+  - 属性
+    - flex-direction调整主轴方向（默认为水平方向）该属性通过定义flex容器的主轴方向来决定felx子项在flex容器中的位置
+      - row 水平方向
+      - row-reverse 反转
+      - column 垂直方向
+      - column-reverse 反转列
+    - justify-content设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式
+      - flex-start 起点对齐
+      - flex-end 终点对齐
+      - center 中间对齐
+      - space-around 环绕
+      - space-between 两端对齐
+    - flex控制子项目的缩放比例
+      - 不指定flex 属性，则不参与分配
+    - align-items设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+      - flex-start 起点对齐
+      - flex-end 终点对齐
+      - center 中间对齐
+      - baseline 基线
+      - Strethc 拉伸
+    - order 设置伸缩项的显示顺序
+  - [参考资料](http://www.w3cplus.com/css3/flexbox-basics.html)
