@@ -151,8 +151,8 @@ font-family: myFirstFont;
     * cubic-bezier 贝塞尔曲线(x1,y1,x2,y2)
   * 过渡事件完成
 ```javascript
-obj.addEventListerner("webkitTransitionEnd", function(){},false); //webkit
-obj.addEventListerner("transitionend", function(){},false); //moz
+obj.addEventListener("webkitTransitionEnd", function(){},false); //webkit
+obj.addEventListener("transitionend", function(){},false); //moz
 ```
 * transform 2D变换
   * rotate() 旋转 -deg 度数 -transform-origin 旋转基点
