@@ -28,6 +28,44 @@
 * &lt;keygen&gt;给表单添加一个公钥
 * &lt;progress&gt;&lt;/progress&gt;定义进度条
 
+## 应用程序标签
+* datalist 数据列表
+```html
+<input type="text" name="" value="" list="list">
+<datalist id="list">
+    <option value="111"></option>
+    <option value="222"></option>
+</datalist>
+```
+* progress 进度条
+* meter 数值显示器
+* menu 右键菜单
+* details 明细
+
+## 链接关系
+* rel 用来描述指定链接与当前文档的关系，便于机器理解文档结构
+* 常见的链接关系表
+    * alternate	文档的可选版本（例如打印页、翻译页或镜像）
+    * stylesheet	文档的外部样式表
+    * start	集合中的第一个文档
+    * next	集合中的下一个文档
+    * prev	集合中的前一个文档
+    * contents	文档目录
+    * index	文档索引
+    * glossary	文档中所用字词的术语表或解释
+    * copyright	包含版权信息的文档
+    * chapter	文档的章
+    * section	文档的节
+    * subsection	文档的子段
+    * appendix	文档附录
+    * help	帮助文档
+    * bookmark	相关文档
+    * nofollow	用于指定 Google 搜索引擎不要跟踪链接
+    * licence	一般用于文献，表示许可证的含义
+    * tag	标签集合
+    * friend	友情链接
+
+
 ## 表单
 * 输入型表单控件
   * email 电子邮箱文本框，跟普通的没什么区别
@@ -55,7 +93,7 @@
   * list和datalist 为输入框构造一个选择列表
     * list值为datalist标签的id
   * required 此项必填，不能为空
-  * pattern正则验证  pattern="\\d{1,5}“
+  * pattern正则验证  pattern="/\d{1,5}/"
   * formaction 在submit里定义提交地址
 * 表单验证
   * validity对象，通过下面的valid可以查看验证是否通过，如果八种验证都通过返回true，一种验证失败返回false
@@ -97,7 +135,7 @@
 * 如何其他浏览器做到兼容
   * [json2.js](http://www.json.org/)
 ## data自定义数据
-* dataset
+* dataset 通过DOM存储与DOM对象强相关的数据
   * data-name dataset.name
   * data-name-first dataset.nameFirst
 * Data数据在jquery mobile中有着重要作用
