@@ -113,6 +113,7 @@ console.log(fn.length);
   - apply——有两个参数 第一个是调用的上下文 第二个是参数组，可以直接把arguments传递进去
   - call——第一个参数是上下文对象 后面的参数是不同函数参数
   - call是通过参数列表完成传递 apply是通过参数数组完成传递
+  - this会发生改变
 ```javascript
 function sum(a, b){
   return a + b;
@@ -394,6 +395,44 @@ function mixin(receivingClass, givingClass) {
     }
   }
 }
+```
+
+## 原型链
+* __proto__ 与 prototype
+- prototype 每一个函数在创建之后都会拥有一个名为prototype的属性，这个属性指向函数的原型对象
+- JavaScript中任意对象都有一个内置属性[[prototype]]，在ES5之前没有标准的方法访问这个内置属性，但是大多数浏览器都支持通过__proto__来访问。
+- ES5中有了对于这个内置属性标准的Get方法Object.getPrototypeOf(). Object.prototype 这个对象是个例外，它的__proto__值为null
+- 隐式原型指向创建这个对象的函数(constructor)的prototype
+- 作用
+- 显式原型的作用：用来实现基于原型的继承与属性的共享。
+- 隐式原型的作用：构成原型链，同样用于实现基于原型的继承。
+- __proto__ 的指向
+- 指向创建这个对象的函数的显式原型
+<pre>
+Object.__proto__ -> function(){}
+Function.prototype -> function(){}
+    Object.__proto__ === Function.prototype
+Object.prototype -> Object
+Function.prototype.__proto__ -> Object
+    Object.prototype === Function.prototype.__proto__
+Object.prototype.__proto__ -> null
+</pre>
+```
+{}          Object原型
+[Function]  function(){}
+Object      内置对象
+-------------------------------------------------------
+{}  -> {}.__proto__ => null
+    -> {}.prototype => undefined
+-------------------------------------------------------
+[Function]  -> [Function].__proto__ => {}
+            -> [Function].prototype => undefined
+-------------------------------------------------------
+Object  -> Object.__proto__ => [Function]
+        -> Object.prototype => Object原型对象
+        |--->   Object原型对象  -> Object原型对象.__proto__ => {}
+                            -> Object原型对象.prototype => undefined
+        -> *Function.prototype =>[Function]
 ```
 ## 闭包
 * 函数的执行顺序
