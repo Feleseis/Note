@@ -1,23 +1,23 @@
-var FW = function() {};
-
-FW.prototype = {
-    /**
-     * 拷贝对象方法
-     * @param  {obj} tag 目标对象
-     * @param  {obj} src 原对象
-     * @return {null}
-     */
-    extend : function(tag, src) {
-        for (var method in src) {
-            if (src.hasOwnProperty(method)) {
-                tag[method] = src[method];
+var fw = null;
+(function() {
+    function FW() {};
+    FW.prototype = {
+        /**
+        * 拷贝对象方法
+        * @param  {obj} tag 目标对象
+        * @param  {obj} src 原对象
+        * @return {null}
+        */
+        extend : function(tag, src) {
+            for (var method in src) {
+                if (src.hasOwnProperty(method)) {
+                    tag[method] = src[method];
+                }
             }
         }
-    }
-};
-
-var fw = new FW();
-
+    };
+    fw = new FW();
+})();
 
 //Basic模块
 fw.extend(fw, {
@@ -450,8 +450,6 @@ fw.extend(fw, {});
 //Type模块
 fw.extend(fw, {});
 
-//基础模块
-fw.extend(fw, {});
 
-//Anmate模块
+//基础模块
 fw.extend(fw, {});
