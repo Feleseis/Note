@@ -1,0 +1,12 @@
+## Packages
+* atom-ternjs
+* script
+* emmet
+* autocomplete-paths
+* autoprefixer
+* color-picker
+* docblockr
+* file-icons
+* markdown-preview-plus
+* minimap
+* open-in-browser
