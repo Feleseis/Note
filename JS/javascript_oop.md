@@ -388,13 +388,6 @@ function mixin(receivingClass, givingClass) {
     }
   }
 }
-function mixin(receivingClass, givingClass) {
-  for (var methodName in givingClass) {
-    if (!receivingClass._proto_[methodName]) {
-      receivingClass._proto_[methodName] = givingClass[methodName];
-    }
-  }
-}
 ```
 
 ## 原型链
