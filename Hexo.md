@@ -1,0 +1,7 @@
+- hexo new #新建文章
+- hexo new page #新建页面
+- hexo generate #生成静态文件
+- hexo server #启动本地web服务
+- hexo deploy #部署播客到远端
+- hexo d -g #生成部署
+- hexo s -g #生成预览
